@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.all
+    @questions = Question.order(created_at: :desc)
   end
 
   def show
@@ -12,10 +12,15 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.create(question_params)
-    redirect_to 'show'
-  end
+    @question = Question.new(question_params)
 
+    if @question.save
+      render 'index'
+    else
+      @errors = @question.errors.full_messages
+      render 'new'
+    end
+  end
 
 private
   def question_params

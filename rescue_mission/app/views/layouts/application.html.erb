@@ -8,6 +8,21 @@
 </head>
 <body>
 
+<div class="notice">
+  <ul>
+    <% if @errors %>
+    <% @errors.each do |error| %>
+
+    <li>
+      <%= error %>
+    </li>
+    <% end %>
+
+    <% end %>
+
+  </ul>
+</div>
+
 <%= yield %>
 
 </body>

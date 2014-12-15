@@ -1,1 +1,9 @@
 <h1>Crack Overflow</h1>
+
+
+<% if @questions %>
+  <% @questions.each do |question| %>
+    <h3>Question:<%=link_to question.title, question %></h3>
+    <h6>Created at: <%= question.created_at %></h6>
+  <% end %>
+<% end %>
