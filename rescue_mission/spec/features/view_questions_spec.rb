@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative 'test_feed'
 
 
 feature "User can view all questions" do
@@ -12,47 +13,41 @@ feature "User can view all questions" do
   # - I must see questions listed in order, most recently posted first
 
 
+
+# USE VARIABLES, FACTORIES, USE ROUTES
+
   it "can see the title of each question" do
-    visit '/questions/new'
-    fill_in "question[title]", with: "What the fuck this is such a long question?"
-    fill_in "question[description]", with: "What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shitWhat the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit??"
+    visit new_question_path
+    fill_in "question[title]", with: QUESTION_TITLE
+    fill_in "question[description]", with: QUESTION_DESCRIPTION
     click_button "Submit"
 
-    visit '/questions/new'
-    fill_in "question[title]", with: "What the frick this is such a long-ass question?"
-    fill_in "question[description]", with: "What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shitWhat the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit??"
+    visit new_question_path
+    fill_in "question[title]", with: (QUESTION_TITLE + "Solutions")
+    fill_in "question[description]", with: QUESTION_DESCRIPTION
     click_button "Submit"
 
-    visit '/questions'
+    visit questions_path
 
-
-    expect(page).to have_content ("What the fuck this is such a long question?")
-    expect(page).to have_content( "What the frick this is such a long-ass question?")
+    expect(page).to have_content(QUESTION_TITLE)
+    expect(page).to have_content(QUESTION_TITLE + "Solutions")
 
   end
 
 
   it "can see the list of questions in order" do
-    visit '/questions/new'
-    fill_in "question[title]", with: "What the fuck this is such a long question?"
-    fill_in "question[description]", with: "What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shitWhat the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit??"
+    visit new_question_path
+    fill_in "question[title]", with: SECOND_QUESTION_TITLE
+    fill_in "question[description]", with: QUESTION_DESCRIPTION
     click_button "Submit"
 
-    visit '/questions/new'
-    fill_in "question[title]", with: "What the frick this is such a long-ass question?"
-    fill_in "question[description]", with: "What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shitWhat the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit??"
+    visit new_question_path
+    fill_in "question[title]", with: (QUESTION_TITLE)
+    fill_in "question[description]", with: QUESTION_DESCRIPTION
     click_button "Submit"
 
-    visit '/questions'
+    visit questions_path
 
-
-
-    ("What the frick this is such a long-ass question?").should appear_before("What the fuck this is such a long question?")
-
+    (QUESTION_TITLE).should appear_before(SECOND_QUESTION_TITLE)
   end
-
-
-
-
-
 end

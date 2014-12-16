@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative 'test_feed'
 
 
 feature "User can view details of a question" do
@@ -13,19 +14,16 @@ feature "User can view details of a question" do
   # - I must see the question's description
 
   it "can get to this page from the questions index" do
-    visit '/questions/new'
-    fill_in "question[title]", with: "What the fuck this is such a long question?"
-    fill_in "question[description]", with: "What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shitWhat the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit"
+    visit new_question_path
+    fill_in "question[title]", with: QUESTION_TITLE
+    fill_in "question[description]", with: QUESTION_DESCRIPTION
 
     click_button "Submit"
 
+    visit questions_path
 
-    visit '/questions'
+    click_link QUESTION_TITLE
 
-    click_link "What the fuck this is such a long question?"
-
-    save_and_open_page
-
-    expect(page).to have_content "What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shitWhat the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit"
+    expect(page).to have_content(QUESTION_DESCRIPTION)
   end
 end

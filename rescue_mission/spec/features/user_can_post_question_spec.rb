@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative 'test_feed'
 
 
 feature "User can post a question" do
@@ -15,25 +16,25 @@ feature "User can post a question" do
   #
 
   it "can create a new question" do
-    visit '/questions/new'
-    fill_in "question[title]", with: "What the fuck this is such a long question?"
-    fill_in "question[description]", with: "What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shitWhat the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit?What the fuck is up with this shit??"
+    visit new_question_path
+    fill_in "question[title]", with: QUESTION_TITLE
+    fill_in "question[description]", with: QUESTION_DESCRIPTION
     click_button "Submit"
     expect(Question.count).to eq(1)
   end
 
   it "can't create a new question with a title less than 40 characters long" do
     visit '/questions/new'
-    fill_in "question[title]", with: "What the fuck?"
-    fill_in "question[description]", with: "What the fuck is up with this shit?"
+    fill_in "question[title]", with: "Political social"
+    fill_in "question[description]", with: "Political social analysis impact"
     click_button "Submit"
     expect(page).to have_content "Title can't be less than 40 characters"
   end
 
   it "can't create a new question with a description less than 150 characters long" do
     visit '/questions/new'
-    fill_in "question[title]", with: "What the fuck?"
-    fill_in "question[description]", with: "What the fuck is up with this shit?"
+    fill_in "question[title]", with: "Rosa Parks Bloomberg solve combat malaria"
+    fill_in "question[description]", with: "Crowdsourcing collaborative consumption"
     click_button "Submit"
     expect(page).to have_content "Description must be at least 150 characters"
   end
