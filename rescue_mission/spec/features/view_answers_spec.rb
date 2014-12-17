@@ -30,8 +30,6 @@ it " and sees all of the question answers in order, most recent last" do
     fill_in "answer[description]", with: ANSWER_DESCRIPTION_II
     click_button "Submit"
 
-    save_and_open_page
-
     (ANSWER_DESCRIPTION_II).should appear_before(ANSWER_DESCRIPTION)
 
 
