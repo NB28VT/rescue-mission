@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
   def new
+
     @answer = parent.answers.new
   end
 
@@ -8,7 +9,7 @@ class AnswersController < ApplicationController
     @answer = parent.answers.new(answer_params)
 
     if @answer.save
-      render question_path
+      redirect_to question_path(parent)
     else
       @errors = @answer.errors.full_messages
       render new_question_path
@@ -16,7 +17,7 @@ class AnswersController < ApplicationController
   end
 
   def show
-    @answer = answer.find(params[:id])
+    redirect_to question_path(parent)
   end
 
 

@@ -26,6 +26,9 @@ feature "User can answer another user's question" do
     click_link QUESTION_TITLE
 
     fill_in "answer[description]", with: ANSWER_DESCRIPTION
+    click_button "Submit"
+
+    save_and_open_page
 
     expect(page).to have_content(ANSWER_DESCRIPTION)
 
@@ -43,7 +46,7 @@ feature "User can answer another user's question" do
 
     fill_in "answer[description]", with: "Jane Addams local solutions"
     click_button "Submit"
-    
+
 
     expect(page).to have_content "can't be less than 50 characters"
   end

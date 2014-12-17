@@ -21,7 +21,7 @@ feature "User can view details of a question" do
     click_button "Submit"
 
     visit questions_path
-
+    
     click_link QUESTION_TITLE
 
     expect(page).to have_content(QUESTION_DESCRIPTION)
