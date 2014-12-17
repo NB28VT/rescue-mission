@@ -28,8 +28,6 @@ feature "User can answer another user's question" do
     fill_in "answer[description]", with: ANSWER_DESCRIPTION
     click_button "Submit"
 
-    save_and_open_page
-
     expect(page).to have_content(ANSWER_DESCRIPTION)
 
   end

@@ -9,4 +9,6 @@ SECOND_QUESTION_TITLE = "Jane Addams local solutions smart cities Angelina Jolie
 QUESTION_DESCRIPTION = "Worldwide conflict resolution non-partisan honesty public institutions. Foster climate change cause design thinking meaningful freedom empower. Open source implementation, Rosa Parks Bloomberg solve combat malaria research replicable. Crowdsourcing collaborative consumption accelerate progress social impact immunize medical supplies. Political social analysis impact, humanitarian relief results turmoil Kony 2012. Cross-agency coordination, humanitarian"
 
 #Needs to be 50 plus
-ANSWER_DESCRIPTION = "Worldwide conflict resolution non-partisan honesty public institutions. Foster climate change cause design thinking meaningful freedom empower. Open source implementation, Rosa Parks Bloomberg solve combat malaria research replicable. Crowdsourcing collaborative consumption"
+ANSWER_DESCRIPTION = "Thinkers who make change happen youth implementation public institutions assistance. Relief challenges resourceful benefit organization social analysis foundation. Prosperity Ford Foundation."
+
+ANSWER_DESCRIPTION_II = "Marginalized communities courageous, international; social impact compassion. Disruptor theory of social change clean water accelerate maintain human being diversity. Disrupt donation carbon emissions reductions fight against oppression nonviolent resistance."
